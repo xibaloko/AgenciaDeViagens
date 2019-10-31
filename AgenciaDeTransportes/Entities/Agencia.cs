@@ -21,41 +21,43 @@ namespace AgenciaDeTransportes.Entities
             string placa = ControleDeInputs.ValidarPlaca(Console.ReadLine().ToUpper());
             Console.Write("\nDIGITE O ANO DO VEÍCULO: ");
             DateTime ano = ControleDeInputs.ValidarAno(Console.ReadLine());
-            Console.Write("\nDIGITE A VELOCIDADE MÁXIMA DO VEÍCULO (KM/H): ");
+            Console.Write("\nDIGITE A VELOCIDADE MÉDIA DO VEÍCULO (KM/H): ");
             double velocidadeMaxima = ControleDeInputs.ValidarPontoFlutuante(Console.ReadLine());
             Console.Write("\nDIGITE A CAPACIDADE DO TANQUE: ");
             double capacidadeMaxima = ControleDeInputs.ValidarPontoFlutuante(Console.ReadLine());
+            Console.Write("\nCOMO ESTA A SITUAÇÃO DOS PNEUS?\nCHEIO[1]\nMODERADO[2]\nMURCHO[3]\nESCOLHA UMA OPÇÃO: ");
+            int statusPneu = ControleDeInputs.ValidarNumeros1A3(Console.ReadLine());
 
             Console.Write("\nFLEX[F]\nALCOOL[A]\nGASOLINA[G]\nCANCELAR[C]\nESCOLHA UMA OPÇÃO: ");
             string opcao = ControleDeInputs.ValidarOpcoes(Console.ReadLine().ToUpper());
 
             double autonomiaGasolina, autonomiaAlcool;
 
-            if (opcao == "F")
+            if (opcao == "F") // INSTANCIA UM CARRO FLEX
             {
                 Console.Write("\nDIGITE QUANTOS KM O VEÍCULO FAZ POR LITRO DE GASOLINA: ");
                 autonomiaGasolina = ControleDeInputs.ValidarPontoFlutuante(Console.ReadLine());
                 Console.Write("\nDIGITE QUANTOS KM O VEÍCULO FAZ POR LITRO DE ALCOOL: ");
                 autonomiaAlcool = ControleDeInputs.ValidarPontoFlutuante(Console.ReadLine());
-                Veiculos.Add(new CarroFlex(marca, modelo, placa, ano, velocidadeMaxima, capacidadeMaxima, autonomiaGasolina, autonomiaAlcool));
+                Veiculos.Add(new CarroFlex(marca, modelo, placa, ano, velocidadeMaxima, capacidadeMaxima, statusPneu, autonomiaGasolina, autonomiaAlcool));
                 Console.WriteLine("\nVEÍCULO CADASTRADO COM SUCESSO!");
             }
-            else if (opcao == "A")
+            else if (opcao == "A") // INSTANCIA UM CARRO A ALCOOL
             {
                 Console.Write("\nDIGITE QUANTOS KM O VEÍCULO FAZ POR LITRO DE ALCOOL: ");
                 autonomiaAlcool = ControleDeInputs.ValidarPontoFlutuante(Console.ReadLine());
-                Veiculos.Add(new CarroAlcool(marca, modelo, placa, ano, velocidadeMaxima, capacidadeMaxima, autonomiaAlcool));
+                Veiculos.Add(new CarroAlcool(marca, modelo, placa, ano, velocidadeMaxima, capacidadeMaxima, statusPneu, autonomiaAlcool));
                 Console.WriteLine("\nVEÍCULO CADASTRADO COM SUCESSO!");
             }
-            else if (opcao == "G")
+            else if (opcao == "G") // INSTANCIA UM CARRO A GASOLINA
             {
                 Console.Write("\nDIGITE QUANTOS KM O VEÍCULO FAZ POR LITRO DE GASOLINA: ");
                 autonomiaGasolina = ControleDeInputs.ValidarPontoFlutuante(Console.ReadLine());
-                Veiculos.Add(new CarroPadrao(marca, modelo, placa, ano, velocidadeMaxima, capacidadeMaxima, autonomiaGasolina));
+                Veiculos.Add(new CarroPadrao(marca, modelo, placa, ano, velocidadeMaxima, capacidadeMaxima, statusPneu, autonomiaGasolina));
                 Console.WriteLine("\nVEÍCULO CADASTRADO COM SUCESSO!");
             }
             else
-                Console.WriteLine("NENHUM VEÍCULO FOI CADASTRADO!");
+                Console.WriteLine("\nNENHUM VEÍCULO FOI CADASTRADO!"); // ABORTA A INSTANCIA
         }
 
         public void CadastrarViagem()
@@ -64,15 +66,17 @@ namespace AgenciaDeTransportes.Entities
             double distancia = ControleDeInputs.ValidarPontoFlutuante(Console.ReadLine());
             Console.Write("\nDIGITE A DATA DESTA VIAGEM (dd/MM/yyyy): ");
             DateTime data = ControleDeInputs.ValidarData(Console.ReadLine());
-            Viagens.Add(new Viagem(distancia, data));
-            Console.WriteLine("VIAGEM CADASTRADA COM SUCESSO!");
+            Console.Write("\nA PREVISÃO DO CLIMA PARA ESTA VIAGEM É BOM? (S/N): ");
+            bool clima = ControleDeInputs.ValidarOpcoesSOuN(Console.ReadLine()) == "S" ? true : false;
+            Viagens.Add(new Viagem(distancia, data, clima)); // INSTANCIA UMA VIAGEM E ADICIONA NA LISTA
+            Console.WriteLine("\nVIAGEM CADASTRADA COM SUCESSO!");
         }
 
-        public void ExibirVeiculos()
+        public void ExibirVeiculos() // PERCORRE OS VEICULOS DA LISTA E OS IMPRIME
         {
             if (Veiculos.Count == 0)
                 Console.Write("\nNÃO HÁ VEÍCULOS CADASTRADOS!\n");
-            else if(Veiculos.Count == 1)
+            else if (Veiculos.Count == 1)
             {
                 Console.Write($"\nHÁ {Veiculos.Count} VEÍCULO CADASTRADO!\n");
                 Veiculos.ForEach(x => Console.WriteLine(x));
@@ -83,11 +87,11 @@ namespace AgenciaDeTransportes.Entities
                 Veiculos.ForEach(x => Console.WriteLine(x));
             }
         }
-        public void ExibirViagens()
+        public void ExibirViagens() // PERCORRE AS VIAGENS DA LISTA E AS IMPRIME
         {
             if (Viagens.Count == 0)
                 Console.Write("\nNÃO HÁ VIAGENS CADASTRADAS!\n");
-            else if(Viagens.Count == 1)
+            else if (Viagens.Count == 1)
             {
                 Console.Write($"\nHÁ {Viagens.Count} VIAGEM CADASTRADA!\n");
                 Viagens.ForEach(x => Console.WriteLine(x));

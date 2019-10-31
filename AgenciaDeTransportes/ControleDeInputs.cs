@@ -16,6 +16,16 @@ namespace AgenciaDeTransportes
             }
             return result;
         }
+        public static int ValidarNumeros1A3(string s) // VALIDAR INPUTS DE NUMEROS INTEIROS DE 1 A 3
+        {
+            int result;
+            while (!int.TryParse(s, out result) || result < 1 || result > 3)
+            {
+                Console.Write("\nVALOR INVÁLIDO, DIGITE APENAS VALORES INTEIROS POSITIVOS DE [1] A [3]: ");
+                s = Console.ReadLine();
+            }
+            return result;
+        }
         public static double ValidarPontoFlutuante(string s) // VALIDAR INPUTS DE NUMEROS DECIMAIS
         {
             double result;

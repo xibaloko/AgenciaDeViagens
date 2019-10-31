@@ -6,15 +6,17 @@ namespace AgenciaDeTransportes.Entities
 {
     class Viagem
     {
-        public int CodigoViagem { get; set; } = new Random().Next(1000, 9999);
+        public int CodigoViagem { get; private set; } = new Random().Next(1000, 9999);
         public double Distancia { get; private set; }
         public DateTime Data { get; private set; }
         public Veiculo Veiculo { get; private set; }
+        public bool Clima { get; private set; }
 
-        public Viagem(double distancia, DateTime data)
+        public Viagem(double distancia, DateTime data, bool clima)
         {
             Distancia = distancia;
             Data = data;
+            Clima = clima;
         }
         public void AdicionarVeiculo(Veiculo veiculo) => Veiculo = veiculo;
 

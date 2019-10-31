@@ -9,8 +9,8 @@ namespace AgenciaDeTransportes.Entities
         public double AutonomiaAlcool { get; private set; }
         public double QuantidadeAlcool { get; set; }
 
-        public CarroFlex(string marca, string modelo, string placa, DateTime ano, double velocidadeMaxima, double capacidadeTanque, double autonomiaGasolina, double autonomiaAlcool)
-            : base(marca, modelo, placa, ano, velocidadeMaxima, capacidadeTanque, autonomiaGasolina)
+        public CarroFlex(string marca, string modelo, string placa, DateTime ano, double velocidadeMedia, double capacidadeTanque, int statusPneu, double autonomiaGasolina, double autonomiaAlcool)
+            : base(marca, modelo, placa, ano, velocidadeMedia, capacidadeTanque, statusPneu, autonomiaGasolina)
         {
             AutonomiaAlcool = autonomiaAlcool;
             Flex = true;
@@ -54,11 +54,14 @@ namespace AgenciaDeTransportes.Entities
                     Console.Write("\nIMPOSSÍVEL ABASTECER! QUANTIDADE SOLICITADA MAIOR DO QUE A CAPACIDADE DO TANQUE..");
             }
         }
-        public override double Percorrer(double kilometros)
+        public override double Percorrer(double kilometros, bool clima)
         {
             double percorridoAlcool;
             double percorridoGasolina;
             double distancia = kilometros;
+
+            AutonomiaAlcool = (clima ? AutonomiaAlcool : AutonomiaAlcool -= AutonomiaAlcool * 0.135);
+            AutonomiaGasolina = (clima ? AutonomiaGasolina : AutonomiaGasolina -= AutonomiaGasolina * 0.12);
 
             while (distancia > 0.0)
             {
@@ -135,7 +138,7 @@ namespace AgenciaDeTransportes.Entities
             StringBuilder printCarroPadrao = new StringBuilder();
             printCarroPadrao.AppendLine("-----------------------------------------------------------------------------");
             printCarroPadrao.AppendLine($"PLACA: {Placa.ToUpper()} - MARCA: {Marca.ToUpper()} - MODELO: {Modelo.ToUpper()}");
-            printCarroPadrao.AppendLine($"ANO: {Ano.ToString("yyyy")} - FLEX: {(Flex ? "SIM" : "NÃO")} - VELOCIDADE MAX: {VelocidadeMaxima.ToString("F2", CultureInfo.InvariantCulture)} KM/H");
+            printCarroPadrao.AppendLine($"ANO: {Ano.ToString("yyyy")} - FLEX: {(Flex ? "SIM" : "NÃO")} - VELOCIDADE MAX: {VelocidadeMedia.ToString("F2", CultureInfo.InvariantCulture)} KM/H");
             printCarroPadrao.AppendLine($"CAPACIDADE DO TANQUE: {CapacidadeTanque}L - STATUS TANQUE: {((QuantidadeAlcool + QuantidadeGasolina) / CapacidadeTanque * 100).ToString("F2", CultureInfo.InvariantCulture)}%");
             printCarroPadrao.AppendLine($"AUTONOMIA GASOLINA {AutonomiaGasolina.ToString("F2", CultureInfo.InvariantCulture)} - AUTONOMIA ALCOOL {AutonomiaAlcool.ToString("F2", CultureInfo.InvariantCulture)}");
             printCarroPadrao.Append("-----------------------------------------------------------------------------");

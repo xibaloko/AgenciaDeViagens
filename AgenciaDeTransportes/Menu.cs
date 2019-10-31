@@ -113,7 +113,7 @@ namespace AgenciaDeTransportes
                                     int codigo = ControleDeInputs.ValidarNumeros(Console.ReadLine());
                                     Viagem viagem = agencia.Viagens.Find(x => x.CodigoViagem == codigo);
                                     viagem.AdicionarVeiculo(veiculo);
-                                    viagem.AtualizarDistancia(veiculo.Percorrer(viagem.Distancia));
+                                    viagem.AtualizarDistancia(veiculo.Percorrer(viagem.Distancia, viagem.Clima));
                                 }
                                 else Console.WriteLine("\nNÃO HÁ VIAGENS, CADASTRE UMA PARA DIRIGIR!");
                             }

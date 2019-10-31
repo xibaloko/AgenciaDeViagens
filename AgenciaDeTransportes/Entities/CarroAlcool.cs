@@ -10,8 +10,8 @@ namespace AgenciaDeTransportes.Entities
         public double QuantidadeAlcool { get; set; }
         public bool Flex { get; set; }
 
-        public CarroAlcool(string marca, string modelo, string placa, DateTime ano, double velocidadeMaxima, double capacidadeTanque, double autonomiaAlcool)
-            : base(marca, modelo, placa, ano, velocidadeMaxima, capacidadeTanque)
+        public CarroAlcool(string marca, string modelo, string placa, DateTime ano, double velocidadeMedia, double capacidadeTanque, int statusPneu, double autonomiaAlcool)
+            : base(marca, modelo, placa, ano, velocidadeMedia, capacidadeTanque, statusPneu)
         {
             AutonomiaAlcool = autonomiaAlcool;
             Flex = false;
@@ -34,10 +34,12 @@ namespace AgenciaDeTransportes.Entities
             else
                 Console.WriteLine("\nIMPOSSÍVEL ABASTECER! QUANTIDADE SOLICITADA MAIOR DO QUE A CAPACIDADE DO TANQUE..");
         }
-        public override double Percorrer(double kilometros)
+        public override double Percorrer(double kilometros, bool clima)
         {
             double percorrido;
             double distancia = kilometros;
+
+            AutonomiaAlcool = (clima ? AutonomiaAlcool : AutonomiaAlcool -= AutonomiaAlcool * 0.135);
 
             while (distancia > 0.0)
             {
@@ -81,7 +83,7 @@ namespace AgenciaDeTransportes.Entities
             StringBuilder printCarroAlcool = new StringBuilder();
             printCarroAlcool.AppendLine("-----------------------------------------------------------------------------");
             printCarroAlcool.AppendLine($"PLACA: {Placa.ToUpper()} - MARCA: {Marca.ToUpper()} - MODELO: {Modelo.ToUpper()}");
-            printCarroAlcool.AppendLine($"ANO: {Ano.ToString("yyyy")} - FLEX: {(Flex ? "SIM" : "NÃO")} - VELOCIDADE MAX: {VelocidadeMaxima.ToString("F2", CultureInfo.InvariantCulture)} KM/H");
+            printCarroAlcool.AppendLine($"ANO: {Ano.ToString("yyyy")} - FLEX: {(Flex ? "SIM" : "NÃO")} - VELOCIDADE MAX: {VelocidadeMedia.ToString("F2", CultureInfo.InvariantCulture)} KM/H");
             printCarroAlcool.AppendLine($"CAPACIDADE DO TANQUE: {CapacidadeTanque}L - STATUS TANQUE: {(QuantidadeAlcool / CapacidadeTanque * 100).ToString("F2", CultureInfo.InvariantCulture)}%");
             printCarroAlcool.AppendLine($"AUTONOMIA GASOLINA {AutonomiaAlcool.ToString("F2", CultureInfo.InvariantCulture)} KM/L");
             printCarroAlcool.Append("-----------------------------------------------------------------------------");
