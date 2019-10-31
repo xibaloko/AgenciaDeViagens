@@ -1,0 +1,33 @@
+C:\Users\uliss\source\repos\AgenciaDeTransportes 2.0\AgenciaDeTransportes\AgenciaDeTransportes\bin\Debug\netcoreapp3.0\AgenciaDeTransportes.exe
+C:\Users\uliss\source\repos\AgenciaDeTransportes 2.0\AgenciaDeTransportes\AgenciaDeTransportes\bin\Debug\netcoreapp3.0\AgenciaDeTransportes.deps.json
+C:\Users\uliss\source\repos\AgenciaDeTransportes 2.0\AgenciaDeTransportes\AgenciaDeTransportes\bin\Debug\netcoreapp3.0\AgenciaDeTransportes.runtimeconfig.json
+C:\Users\uliss\source\repos\AgenciaDeTransportes 2.0\AgenciaDeTransportes\AgenciaDeTransportes\bin\Debug\netcoreapp3.0\AgenciaDeTransportes.runtimeconfig.dev.json
+C:\Users\uliss\source\repos\AgenciaDeTransportes 2.0\AgenciaDeTransportes\AgenciaDeTransportes\bin\Debug\netcoreapp3.0\AgenciaDeTransportes.dll
+C:\Users\uliss\source\repos\AgenciaDeTransportes 2.0\AgenciaDeTransportes\AgenciaDeTransportes\bin\Debug\netcoreapp3.0\AgenciaDeTransportes.pdb
+C:\Users\uliss\source\repos\AgenciaDeTransportes 2.0\AgenciaDeTransportes\AgenciaDeTransportes\obj\Debug\netcoreapp3.0\AgenciaDeTransportes.csprojAssemblyReference.cache
+C:\Users\uliss\source\repos\AgenciaDeTransportes 2.0\AgenciaDeTransportes\AgenciaDeTransportes\obj\Debug\netcoreapp3.0\AgenciaDeTransportes.AssemblyInfoInputs.cache
+C:\Users\uliss\source\repos\AgenciaDeTransportes 2.0\AgenciaDeTransportes\AgenciaDeTransportes\obj\Debug\netcoreapp3.0\AgenciaDeTransportes.AssemblyInfo.cs
+C:\Users\uliss\source\repos\AgenciaDeTransportes 2.0\AgenciaDeTransportes\AgenciaDeTransportes\obj\Debug\netcoreapp3.0\AgenciaDeTransportes.dll
+C:\Users\uliss\source\repos\AgenciaDeTransportes 2.0\AgenciaDeTransportes\AgenciaDeTransportes\obj\Debug\netcoreapp3.0\AgenciaDeTransportes.pdb
+C:\Users\Dev4Jobs9\source\repos\AgenciaDeTransportes 3.0\AgenciaDeTransportes\AgenciaDeTransportes\bin\Debug\netcoreapp3.0\AgenciaDeTransportes.exe
+C:\Users\Dev4Jobs9\source\repos\AgenciaDeTransportes 3.0\AgenciaDeTransportes\AgenciaDeTransportes\bin\Debug\netcoreapp3.0\AgenciaDeTransportes.deps.json
+C:\Users\Dev4Jobs9\source\repos\AgenciaDeTransportes 3.0\AgenciaDeTransportes\AgenciaDeTransportes\bin\Debug\netcoreapp3.0\AgenciaDeTransportes.runtimeconfig.json
+C:\Users\Dev4Jobs9\source\repos\AgenciaDeTransportes 3.0\AgenciaDeTransportes\AgenciaDeTransportes\bin\Debug\netcoreapp3.0\AgenciaDeTransportes.runtimeconfig.dev.json
+C:\Users\Dev4Jobs9\source\repos\AgenciaDeTransportes 3.0\AgenciaDeTransportes\AgenciaDeTransportes\bin\Debug\netcoreapp3.0\AgenciaDeTransportes.dll
+C:\Users\Dev4Jobs9\source\repos\AgenciaDeTransportes 3.0\AgenciaDeTransportes\AgenciaDeTransportes\bin\Debug\netcoreapp3.0\AgenciaDeTransportes.pdb
+C:\Users\Dev4Jobs9\source\repos\AgenciaDeTransportes 3.0\AgenciaDeTransportes\AgenciaDeTransportes\obj\Debug\netcoreapp3.0\AgenciaDeTransportes.csprojAssemblyReference.cache
+C:\Users\Dev4Jobs9\source\repos\AgenciaDeTransportes 3.0\AgenciaDeTransportes\AgenciaDeTransportes\obj\Debug\netcoreapp3.0\AgenciaDeTransportes.AssemblyInfoInputs.cache
+C:\Users\Dev4Jobs9\source\repos\AgenciaDeTransportes 3.0\AgenciaDeTransportes\AgenciaDeTransportes\obj\Debug\netcoreapp3.0\AgenciaDeTransportes.AssemblyInfo.cs
+C:\Users\Dev4Jobs9\source\repos\AgenciaDeTransportes 3.0\AgenciaDeTransportes\AgenciaDeTransportes\obj\Debug\netcoreapp3.0\AgenciaDeTransportes.dll
+C:\Users\Dev4Jobs9\source\repos\AgenciaDeTransportes 3.0\AgenciaDeTransportes\AgenciaDeTransportes\obj\Debug\netcoreapp3.0\AgenciaDeTransportes.pdb
+C:\Users\Dev4Jobs9\source\repos\AgenciaDeTransportes\AgenciaDeTransportes\bin\Debug\netcoreapp3.0\AgenciaDeTransportes.exe
+C:\Users\Dev4Jobs9\source\repos\AgenciaDeTransportes\AgenciaDeTransportes\bin\Debug\netcoreapp3.0\AgenciaDeTransportes.deps.json
+C:\Users\Dev4Jobs9\source\repos\AgenciaDeTransportes\AgenciaDeTransportes\bin\Debug\netcoreapp3.0\AgenciaDeTransportes.runtimeconfig.json
+C:\Users\Dev4Jobs9\source\repos\AgenciaDeTransportes\AgenciaDeTransportes\bin\Debug\netcoreapp3.0\AgenciaDeTransportes.runtimeconfig.dev.json
+C:\Users\Dev4Jobs9\source\repos\AgenciaDeTransportes\AgenciaDeTransportes\bin\Debug\netcoreapp3.0\AgenciaDeTransportes.dll
+C:\Users\Dev4Jobs9\source\repos\AgenciaDeTransportes\AgenciaDeTransportes\bin\Debug\netcoreapp3.0\AgenciaDeTransportes.pdb
+C:\Users\Dev4Jobs9\source\repos\AgenciaDeTransportes\AgenciaDeTransportes\obj\Debug\netcoreapp3.0\AgenciaDeTransportes.csprojAssemblyReference.cache
+C:\Users\Dev4Jobs9\source\repos\AgenciaDeTransportes\AgenciaDeTransportes\obj\Debug\netcoreapp3.0\AgenciaDeTransportes.AssemblyInfoInputs.cache
+C:\Users\Dev4Jobs9\source\repos\AgenciaDeTransportes\AgenciaDeTransportes\obj\Debug\netcoreapp3.0\AgenciaDeTransportes.AssemblyInfo.cs
+C:\Users\Dev4Jobs9\source\repos\AgenciaDeTransportes\AgenciaDeTransportes\obj\Debug\netcoreapp3.0\AgenciaDeTransportes.dll
+C:\Users\Dev4Jobs9\source\repos\AgenciaDeTransportes\AgenciaDeTransportes\obj\Debug\netcoreapp3.0\AgenciaDeTransportes.pdb
