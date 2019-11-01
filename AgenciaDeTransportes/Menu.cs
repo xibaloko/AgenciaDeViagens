@@ -99,7 +99,7 @@ namespace AgenciaDeTransportes
                         {
                             try
                             {
-                                Console.Write("\nESCOLHA UM VEÍCULO PARA DIRIGIR!");
+                                Console.Write("\nESCOLHA UM VEÍCULO PARA DIRIGIR!\n");
                                 agencia.ExibirVeiculos();
                                 Console.Write("\nDIGITE O NÚMERO DA PLACA DO VEÍCULO PARA DIRIGIR: ");
                                 string placa = ControleDeInputs.ValidarPlaca(Console.ReadLine().ToUpper());
@@ -107,7 +107,7 @@ namespace AgenciaDeTransportes
 
                                 if (agencia.Viagens.Count > 0)
                                 {
-                                    Console.Write("\nESCOLHA UMA VIAGEM PARA DIRIGIR!");
+                                    Console.Write("\nESCOLHA UMA VIAGEM PARA DIRIGIR!\n");
                                     agencia.ExibirViagens();
                                     Console.Write("\nDIGITE O CÓDIGO DA VIAGEM QUE DESEJA DIRIGIR: ");
                                     int codigo = ControleDeInputs.ValidarNumeros(Console.ReadLine());

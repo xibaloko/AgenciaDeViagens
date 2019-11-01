@@ -36,7 +36,7 @@ namespace AgenciaDeTransportes.Entities
                 else
                     Console.Write("\nIMPOSSÍVEL ABASTECER! QUANTIDADE SOLICITADA MAIOR DO QUE A CAPACIDADE DO TANQUE..");
             }
-            else
+            else if (n == 2)
             {
                 Console.Write("\nDIGITE A QUANTIDADE EM LITROS A SER ABASTECIDO EM GASOLINA OU [0] PARA COMPLETAR: ");
                 double litros = ControleDeInputs.ValidarLitrosAbastecimento(Console.ReadLine());
@@ -53,6 +53,7 @@ namespace AgenciaDeTransportes.Entities
                 else
                     Console.Write("\nIMPOSSÍVEL ABASTECER! QUANTIDADE SOLICITADA MAIOR DO QUE A CAPACIDADE DO TANQUE..");
             }
+            else Console.WriteLine("\nVOCÊ NÃO SELECIONOU NENHUMA OPÇÃO, OPERAÇÃO CANCELADA!");
         }
         public override double Percorrer(double kilometros, bool clima)
         {
@@ -60,9 +61,25 @@ namespace AgenciaDeTransportes.Entities
             double percorridoGasolina;
             double distancia = kilometros;
 
-            AutonomiaAlcool = (clima ? AutonomiaAlcool : AutonomiaAlcool -= AutonomiaAlcool * 0.135);
-            AutonomiaGasolina = (clima ? AutonomiaGasolina : AutonomiaGasolina -= AutonomiaGasolina * 0.12);
+            AutonomiaAlcool = (clima ? AutonomiaAlcool : AutonomiaAlcool -= AutonomiaAlcool * 0.15);
+            AutonomiaGasolina = (clima ? AutonomiaGasolina : AutonomiaGasolina -= AutonomiaGasolina * 0.20);
 
+            if (StatusPneu == 2)
+            {
+                AutonomiaGasolina -= AutonomiaGasolina * 0.1;
+                AutonomiaAlcool -= AutonomiaAlcool * 0.1;
+            }
+            else if (StatusPneu == 3)
+            {
+                AutonomiaGasolina -= AutonomiaGasolina * 0.1;
+                AutonomiaAlcool -= AutonomiaAlcool * 0.1;
+            }
+            else
+            {
+                AutonomiaGasolina = AutonomiaGasolina;
+                AutonomiaAlcool = AutonomiaAlcool;
+            }
+            
             while (distancia > 0.0)
             {
                 /*------------------------------- ALCOOL -------------------------------*/
@@ -75,7 +92,8 @@ namespace AgenciaDeTransportes.Entities
                         Console.Write("\nVOCÊ CONCLUIU O PERCURSO!");
                     else
                     {
-                        Console.Write($"\nVOCÊ PERCORREU {percorridoAlcool}KM USANDO ALCOOL..");
+                        if(percorridoAlcool > 0.0) Console.Write($"\nVOCÊ PERCORREU {percorridoAlcool}KM USANDO ALCOOL..");
+
                         if (QuantidadeAlcool == 0.0 && QuantidadeGasolina == 0.0)
                         {
                             Console.Write("\nO VEÍCULO ESTÁ SEM COMBUSTIVEL, DESEJA ABASTECER? (S/N): ");
@@ -94,7 +112,7 @@ namespace AgenciaDeTransportes.Entities
                 else
                 {
                     QuantidadeAlcool -= distancia / AutonomiaAlcool;
-                    Console.Write($"\nVOCÊ CONCLUIU O PERCURSO E O TANQUE AINDA ESTÁ COM {(QuantidadeGasolina + QuantidadeAlcool) / CapacidadeTanque * 100}% DE COMBUSTÍVEL!");
+                    Console.WriteLine($"\nVOCÊ CONCLUIU O PERCURSO E O TANQUE AINDA ESTÁ COM {(QuantidadeGasolina + QuantidadeAlcool) / CapacidadeTanque * 100}% DE COMBUSTÍVEL!");
                     return 0.0;
                 }
                 /*------------------------------- GASOLINA -------------------------------*/
@@ -107,7 +125,8 @@ namespace AgenciaDeTransportes.Entities
                         Console.Write("\nVOCÊ CONCLUIU O PERCURSO!");
                     else
                     {
-                        Console.Write($"\nVOCÊ PERCORREU {percorridoGasolina}KM USANDO GASOLINA..");
+                        if(percorridoGasolina > 0) Console.Write($"\nVOCÊ PERCORREU {percorridoGasolina}KM USANDO GASOLINA..");
+
                         if (QuantidadeAlcool == 0.0 && QuantidadeGasolina == 0.0)
                         {
                             Console.Write("\nO VEÍCULO ESTÁ SEM COMBUSTIVEL, DESEJA ABASTECER? (S/N): ");
@@ -126,9 +145,10 @@ namespace AgenciaDeTransportes.Entities
                 else
                 {
                     QuantidadeGasolina -= distancia / AutonomiaGasolina;
-                    Console.Write($"\nVOCÊ CONCLUIU O PERCURSO E O TANQUE AINDA ESTÁ COM {((QuantidadeGasolina + QuantidadeAlcool) / CapacidadeTanque * 100).ToString("F2",CultureInfo.InvariantCulture)}% DE COMBUSTÍVEL!");
+                    Console.WriteLine($"\nVOCÊ CONCLUIU O PERCURSO E O TANQUE AINDA ESTÁ COM {((QuantidadeGasolina + QuantidadeAlcool) / CapacidadeTanque * 100).ToString("F2", CultureInfo.InvariantCulture)}% DE COMBUSTÍVEL!");
                     return 0.0;
                 }
+                //Console.Write($"\nVOCÊ PERCORREU {percorridoGasolina + percorridoAlcool}KM..");
             }
             Console.Write($"\nVOCÊ CONCLUIU O PERCURSO!");
             return distancia;
@@ -137,10 +157,10 @@ namespace AgenciaDeTransportes.Entities
         {
             StringBuilder printCarroPadrao = new StringBuilder();
             printCarroPadrao.AppendLine("-----------------------------------------------------------------------------");
-            printCarroPadrao.AppendLine($"PLACA: {Placa.ToUpper()} - MARCA: {Marca.ToUpper()} - MODELO: {Modelo.ToUpper()}");
-            printCarroPadrao.AppendLine($"ANO: {Ano.ToString("yyyy")} - FLEX: {(Flex ? "SIM" : "NÃO")} - VELOCIDADE MAX: {VelocidadeMedia.ToString("F2", CultureInfo.InvariantCulture)} KM/H");
+            printCarroPadrao.AppendLine($"PLACA: {Placa} - MARCA: {Marca} - MODELO: {Modelo}");
+            printCarroPadrao.AppendLine($"ANO: {Ano.ToString("yyyy")} - FLEX: {(Flex ? "SIM" : "NÃO")} - VELOCIDADE MÉDIA: {VelocidadeMedia.ToString("F2", CultureInfo.InvariantCulture)} KM/H");
             printCarroPadrao.AppendLine($"CAPACIDADE DO TANQUE: {CapacidadeTanque}L - STATUS TANQUE: {((QuantidadeAlcool + QuantidadeGasolina) / CapacidadeTanque * 100).ToString("F2", CultureInfo.InvariantCulture)}%");
-            printCarroPadrao.AppendLine($"AUTONOMIA GASOLINA {AutonomiaGasolina.ToString("F2", CultureInfo.InvariantCulture)} - AUTONOMIA ALCOOL {AutonomiaAlcool.ToString("F2", CultureInfo.InvariantCulture)}");
+            printCarroPadrao.AppendLine($"AUTONOMIA GASOLINA {AutonomiaGasolina.ToString("F2", CultureInfo.InvariantCulture)} KM/L - AUTONOMIA ALCOOL {AutonomiaAlcool.ToString("F2", CultureInfo.InvariantCulture)} KM/L");
             printCarroPadrao.Append("-----------------------------------------------------------------------------");
             return printCarroPadrao.ToString();
         }

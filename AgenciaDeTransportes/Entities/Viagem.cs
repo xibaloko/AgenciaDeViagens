@@ -9,6 +9,7 @@ namespace AgenciaDeTransportes.Entities
         public int CodigoViagem { get; private set; } = new Random().Next(1000, 9999);
         public double Distancia { get; private set; }
         public DateTime Data { get; private set; }
+
         public Veiculo Veiculo { get; private set; }
         public bool Clima { get; private set; }
 
@@ -27,6 +28,7 @@ namespace AgenciaDeTransportes.Entities
             StringBuilder printViagem = new StringBuilder();
             printViagem.AppendLine($"CÓDIGO DA VIAGEM: {CodigoViagem}");
             printViagem.AppendLine($"DISTÂNCIA A PERCORRER: {Distancia.ToString("F2", CultureInfo.InvariantCulture)} KM - DATA: {Data.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)}");
+            
             printViagem.AppendLine($"STATUS VIAGEM: {(Distancia == 0 ? "CONCLUIDA" : "PENDENTE")}");
             if (Veiculo != null)
                 printViagem.AppendLine($"VEÍCULO USADO: {Veiculo.Marca.ToUpper()} - {Veiculo.Modelo.ToUpper()} - PLACA: {Veiculo.Placa.ToUpper()}");
