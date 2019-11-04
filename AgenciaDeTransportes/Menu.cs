@@ -77,7 +77,8 @@ namespace AgenciaDeTransportes
                         {
                             try
                             {
-                                Console.Write("\nESCOLHA UM VEÍCULO PARA ABASTECER!");
+                                Console.Clear();
+                                Console.Write("\nESCOLHA UM VEÍCULO PARA ABASTECER!\n");
                                 agencia.ExibirVeiculos();
                                 Console.Write("\nDIGITE O NÚMERO DA PLACA DO VEÍCULO PARA ABASTECER: ");
                                 string placa = ControleDeInputs.ValidarPlaca(Console.ReadLine().ToUpper());
@@ -99,6 +100,7 @@ namespace AgenciaDeTransportes
                         {
                             try
                             {
+                                Console.Clear();
                                 Console.Write("\nESCOLHA UM VEÍCULO PARA DIRIGIR!\n");
                                 agencia.ExibirVeiculos();
                                 Console.Write("\nDIGITE O NÚMERO DA PLACA DO VEÍCULO PARA DIRIGIR: ");
@@ -107,13 +109,13 @@ namespace AgenciaDeTransportes
 
                                 if (agencia.Viagens.Count > 0)
                                 {
+                                    Console.Clear();
                                     Console.Write("\nESCOLHA UMA VIAGEM PARA DIRIGIR!\n");
                                     agencia.ExibirViagens();
-                                    Console.Write("\nDIGITE O CÓDIGO DA VIAGEM QUE DESEJA DIRIGIR: ");
+                                    Console.Write("DIGITE O CÓDIGO DA VIAGEM QUE DESEJA DIRIGIR: ");
                                     int codigo = ControleDeInputs.ValidarNumeros(Console.ReadLine());
                                     Viagem viagem = agencia.Viagens.Find(x => x.CodigoViagem == codigo);
-                                    viagem.AdicionarVeiculo(veiculo);
-                                    viagem.AtualizarDistancia(veiculo.Percorrer(viagem.Distancia, viagem.Clima));
+                                    veiculo.Percorrer(viagem);
                                 }
                                 else Console.WriteLine("\nNÃO HÁ VIAGENS, CADASTRE UMA PARA DIRIGIR!");
                             }

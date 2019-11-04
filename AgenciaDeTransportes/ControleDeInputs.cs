@@ -96,9 +96,9 @@ namespace AgenciaDeTransportes
         }
         public static string ValidarOpcoes(string s) // VALIDAR OPÇÕES DO TIPO DE COMBUSTIVEL
         {
-            while (s != "F" && s != "A" && s != "G" && s != "C")
+            while (s != "F" && s != "A" && s != "G")
             {
-                Console.Write("\nVALOR INVÁLIDO, ESCOLHA ENTRE AS OPÇÕES [F]-[A]-[G]-[C]: ");
+                Console.Write("\nVALOR INVÁLIDO, ESCOLHA ENTRE AS OPÇÕES [F]-[A]-[G]: ");
                 Console.WriteLine();
                 s = Console.ReadLine().ToUpper();
             }

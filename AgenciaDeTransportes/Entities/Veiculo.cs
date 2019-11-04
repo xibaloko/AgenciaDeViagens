@@ -24,6 +24,7 @@ namespace AgenciaDeTransportes.Entities
         }
 
         public abstract void Abastecer();
-        public abstract double Percorrer(double kilometros, bool clima);
+        public abstract void Calibrar(bool clima);
+        public abstract void Percorrer(Viagem viagem);
     }
 }

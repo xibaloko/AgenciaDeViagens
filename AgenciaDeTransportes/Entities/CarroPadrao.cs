@@ -7,6 +7,7 @@ namespace AgenciaDeTransportes.Entities
     class CarroPadrao : Veiculo
     {
         public double AutonomiaGasolina { get; set; }
+        public double AutonomiaGasolinaVariada { get; set; }
         public double QuantidadeGasolina { get; set; }
         public bool Flex { get; set; }
 
@@ -34,56 +35,73 @@ namespace AgenciaDeTransportes.Entities
             else
                 Console.WriteLine("\nIMPOSSÍVEL ABASTECER! QUANTIDADE SOLICITADA MAIOR DO QUE A CAPACIDADE DO TANQUE..");
         }
-        public override double Percorrer(double kilometros, bool clima)
+        public override void Calibrar(bool clima)
         {
-            double percorrido;
-            double distancia = kilometros;
+            Console.Write("\nDESEJA CALIBRAR OS PNEUS? (S/N): ");
+            string s = ControleDeInputs.ValidarOpcoesSOuN(Console.ReadLine().ToUpper());
+            if (s == "S")
+            {
+                Console.Write("\nCOMO DESEJA CALIBRAR OS PNEUS?\n\nCHEIO[1]\nMODERADO[2]\nMURCHO[3]\n\nESCOLHA UMA OPÇÃO: ");
+                StatusPneu = ControleDeInputs.ValidarNumeros1A3(Console.ReadLine());
 
-            AutonomiaGasolina = (clima ? AutonomiaGasolina : AutonomiaGasolina -= AutonomiaGasolina * 0.12);
+                AutonomiaGasolinaVariada = (clima ? AutonomiaGasolina : AutonomiaGasolina - AutonomiaGasolina * 0.12);
+
+                if (StatusPneu == 2)
+                    AutonomiaGasolinaVariada -= AutonomiaGasolina * 0.0725;
+                else if (StatusPneu == 3)
+                    AutonomiaGasolinaVariada -= AutonomiaGasolina * 0.0915;
+            }
+        }
+        public override void Percorrer(Viagem viagem)
+        {
+            viagem.AdicionarVeiculo(this);
+            double percorrido;
+
+            AutonomiaGasolinaVariada = (viagem.Clima ? AutonomiaGasolina : AutonomiaGasolina - AutonomiaGasolina * 0.12);
 
             if (StatusPneu == 2)
-                AutonomiaGasolina -= AutonomiaGasolina * 0.0725;
+                AutonomiaGasolinaVariada -= AutonomiaGasolina * 0.0725;
             else if (StatusPneu == 3)
-                AutonomiaGasolina -= AutonomiaGasolina * 0.0915;
-            else
-                AutonomiaGasolina = AutonomiaGasolina;
+                AutonomiaGasolinaVariada -= AutonomiaGasolina * 0.0915;
 
-            while (distancia > 0.0)
+            while (viagem.Distancia > 0.0)
             {
-                if (distancia >= QuantidadeGasolina * AutonomiaGasolina)
+                if (viagem.Distancia >= QuantidadeGasolina * AutonomiaGasolinaVariada)
                 {
-                    percorrido = QuantidadeGasolina * AutonomiaGasolina;
-                    QuantidadeGasolina -= percorrido / AutonomiaGasolina;
+                    percorrido = QuantidadeGasolina * AutonomiaGasolinaVariada;
+                    QuantidadeGasolina -= percorrido / AutonomiaGasolinaVariada;
 
-                    if (percorrido == distancia)
+                    if (percorrido == viagem.Distancia)
                         Console.Write("\nVOCÊ CONCLUIU O PERCURSO!");
                     else
                     {
-                        Console.Write($"\nVOCÊ PERCORREU {percorrido}KM..");
+                        Console.Write($"\nVOCÊ PERCORREU {percorrido.ToString("F2", CultureInfo.InvariantCulture)}KM..");
                         if (QuantidadeGasolina == 0.0)
                         {
                             Console.Write("\nO VEÍCULO ESTÁ SEM COMBUSTIVEL, DESEJA ABASTECER? (S/N): ");
                             string s = ControleDeInputs.ValidarOpcoesSOuN(Console.ReadLine().ToUpper());
                             if (s == "S")
+                            {
                                 Abastecer();
+                                Calibrar(viagem.Clima);
+                            }
                             else
                             {
                                 Console.WriteLine("\nOK, A VIAGEM FICARÁ PAUSADA!");
-                                return distancia -= percorrido;
+                                viagem.Distancia -= percorrido; return;
                             }
                         }
                     }
-                    distancia -= percorrido;
+                    viagem.Distancia -= percorrido;
                 }
                 else
                 {
-                    QuantidadeGasolina -= distancia / AutonomiaGasolina;
-                    Console.Write($"\nVOCÊ CONCLUIU O PERCURSO E O TANQUE AINDA ESTÁ COM {(QuantidadeGasolina / CapacidadeTanque * 100).ToString("F2",CultureInfo.InvariantCulture)}% DE COMBUSTÍVEL!");
-                    return 0.0;
+                    QuantidadeGasolina -= viagem.Distancia / AutonomiaGasolinaVariada;
+                    Console.Write($"\nVOCÊ CONCLUIU O PERCURSO E O TANQUE AINDA ESTÁ COM {(QuantidadeGasolina / CapacidadeTanque * 100).ToString("F2", CultureInfo.InvariantCulture)}% DE COMBUSTÍVEL!");
+                    viagem.Distancia = 0.0; return;
                 }
             }
             Console.Write($"\nVOCÊ CONCLUIU O PERCURSO!");
-            return distancia;
         }
         public override string ToString()
         {
