@@ -1,4 +1,5 @@
 ﻿using System;
+using static AgenciaDeTransportes.ControleDeInputs;
 
 namespace AgenciaDeTransportes.Entities
 {
@@ -22,9 +23,19 @@ namespace AgenciaDeTransportes.Entities
             CapacidadeTanque = capacidadeTanque;
             StatusPneu = statusPneu;
         }
-
+        public void Calibrar()
+        {
+            Console.Write("\nCOMO DESEJA CALIBRAR OS PNEUS?\n\nMURCHO[1]\nMODERADO[2]\nCHEIO[3]\n\nESCOLHA UMA OPÇÃO: ");
+            StatusPneu = ValidarNumeros0A2(Console.ReadLine());
+        }
+        public void DescalibrarPneu()
+        {
+            int chanceDescalibrar = new Random().Next(0, 1);
+            if (chanceDescalibrar == 0)
+                StatusPneu--;
+        }
         public abstract void Abastecer();
-        public abstract void Calibrar(bool clima);
-        public abstract void Percorrer(Viagem viagem);
+        public abstract void AutonomiaClima(Viagem viagem);
+        public abstract void AutonomiaPneu();
     }
 }

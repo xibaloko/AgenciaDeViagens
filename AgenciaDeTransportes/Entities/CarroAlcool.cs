@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Globalization;
+using static AgenciaDeTransportes.ControleDeInputs;
 
 namespace AgenciaDeTransportes.Entities
 {
@@ -17,10 +18,11 @@ namespace AgenciaDeTransportes.Entities
             AutonomiaAlcool = autonomiaAlcool;
             Flex = false;
         }
+
         public override void Abastecer()
         {
             Console.Write("\nDIGITE A QUANTIDADE A SER ABASTECIDO EM ALCOOL (LITROS) OU [0] PARA COMPLETAR: ");
-            double litros = ControleDeInputs.ValidarLitrosAbastecimento(Console.ReadLine());
+            double litros = ValidarLitrosAbastecimento(Console.ReadLine());
 
             if (litros == 0.0)
             {
@@ -35,74 +37,17 @@ namespace AgenciaDeTransportes.Entities
             else
                 Console.WriteLine("\nIMPOSSÍVEL ABASTECER! QUANTIDADE SOLICITADA MAIOR DO QUE A CAPACIDADE DO TANQUE..");
         }
-        public override void Calibrar(bool clima)
+
+        public override void AutonomiaClima(Viagem viagem)
         {
-            Console.Write("\nDESEJA CALIBRAR OS PNEUS? (S/N): ");
-            string s = ControleDeInputs.ValidarOpcoesSOuN(Console.ReadLine().ToUpper());
-            if (s == "S")
-            {
-                Console.Write("\nCOMO DESEJA CALIBRAR OS PNEUS?\n\nCHEIO[1]\nMODERADO[2]\nMURCHO[3]\n\nESCOLHA UMA OPÇÃO: ");
-                StatusPneu = ControleDeInputs.ValidarNumeros1A3(Console.ReadLine());
-
-                AutonomiaAlcoolVariada = (clima ? AutonomiaAlcool : AutonomiaAlcool - AutonomiaAlcool * 0.135);
-
-                if (StatusPneu == 2)
-                    AutonomiaAlcoolVariada -= AutonomiaAlcool * 0.0725;
-                else if (StatusPneu == 3)
-                    AutonomiaAlcoolVariada -= AutonomiaAlcool * 0.0915;
-            }
+            throw new NotImplementedException();
         }
-        public override void Percorrer(Viagem viagem)
+
+        public override void AutonomiaPneu()
         {
-            viagem.AdicionarVeiculo(this);
-            double percorrido;
-
-            AutonomiaAlcoolVariada = (viagem.Clima ? AutonomiaAlcool : AutonomiaAlcool - AutonomiaAlcool * 0.135);
-
-            if (StatusPneu == 2)
-                AutonomiaAlcoolVariada -= AutonomiaAlcool * 0.0725;
-            else if (StatusPneu == 3)
-                AutonomiaAlcoolVariada -= AutonomiaAlcool * 0.0915;
-
-            while (viagem.Distancia > 0.0)
-            {
-                if (viagem.Distancia >= QuantidadeAlcool * AutonomiaAlcool)
-                {
-                    percorrido = QuantidadeAlcool * AutonomiaAlcool;
-                    QuantidadeAlcool -= percorrido / AutonomiaAlcool;
-
-                    if (percorrido == viagem.Distancia)
-                        Console.Write("\nVOCÊ CONCLUIU O PERCURSO!");
-                    else
-                    {
-                        Console.Write($"\nVOCÊ PERCORREU {percorrido.ToString("F2", CultureInfo.InvariantCulture)}KM..");
-                        if (QuantidadeAlcool == 0.0)
-                        {
-                            Console.Write("\nO VEÍCULO ESTÁ SEM COMBUSTIVEL, DESEJA ABASTECER? (S/N): ");
-                            string s = ControleDeInputs.ValidarOpcoesSOuN(Console.ReadLine().ToUpper());
-                            if (s == "S")
-                            {
-                                Abastecer();
-                                Calibrar(viagem.Clima);
-                            }
-                            else
-                            {
-                                Console.WriteLine("\nOK, A VIAGEM FICARÁ PAUSADA!");
-                                viagem.Distancia -= percorrido; return;
-                            }
-                        }
-                    }
-                    viagem.Distancia -= percorrido;
-                }
-                else
-                {
-                    QuantidadeAlcool -= viagem.Distancia / AutonomiaAlcool;
-                    Console.Write($"\nVOCÊ CONCLUIU O PERCURSO E O TANQUE AINDA ESTÁ COM {(QuantidadeAlcool / CapacidadeTanque * 100).ToString("F2", CultureInfo.InvariantCulture)}% DE COMBUSTÍVEL!");
-                    viagem.Distancia = 0.0; return;
-                }
-            }
-            Console.Write($"\nVOCÊ CONCLUIU O PERCURSO!");
+            throw new NotImplementedException();
         }
+
         public override string ToString()
         {
             StringBuilder printCarroAlcool = new StringBuilder();

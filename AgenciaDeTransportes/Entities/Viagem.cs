@@ -10,22 +10,20 @@ namespace AgenciaDeTransportes.Entities
         public double Distancia { get; set; }
         public DateTime Data { get; private set; }
         public TimeSpan Duracao { get; set; }
-        public Veiculo Veiculo { get; private set; }
-        public bool Clima { get; private set; }
+        public string Clima { get; private set; }
+        public string ClimaVariado { get; set; }
 
-        public Viagem(double distancia, DateTime data, bool clima, Veiculo veiculo)
+        public Viagem(double distancia, DateTime data, string clima)
         {
             Distancia = distancia;
             Data = data;
             Clima = clima;
-            Veiculo = veiculo;
-            Duracao = TimeSpan.FromHours(distancia / veiculo.VelocidadeMedia);
         }
 
-        public void AdicionarVeiculo(Veiculo veiculo)
+        public void MudarClima()
         {
-            Veiculo = veiculo;
-            Duracao = TimeSpan.FromHours(Distancia / veiculo.VelocidadeMedia);
+            int random = new Random().Next(0, 2);
+            ClimaVariado = random == 0 ? "ENSOLARADO" : random == 1 ? "CHOVENDO" : "NEVANDO";
         }
 
         public override string ToString()
@@ -33,9 +31,8 @@ namespace AgenciaDeTransportes.Entities
             StringBuilder printViagem = new StringBuilder();
             printViagem.AppendLine($"CÓDIGO DA VIAGEM: {CodigoViagem}");
             printViagem.AppendLine($"DISTÂNCIA A PERCORRER: {Distancia.ToString("F2", CultureInfo.InvariantCulture)} KM - DATA: {Data.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)}");
-            printViagem.AppendLine($"STATUS VIAGEM: {(Distancia == 0 ? "CONCLUIDA" : "PENDENTE")} - CLIMA: {(Clima ? "BOM" : "RUIM")}");
+            printViagem.AppendLine($"STATUS VIAGEM: {(Distancia == 0 ? "CONCLUIDA" : "PENDENTE")} - CLIMA: {Clima}");
             printViagem.AppendLine($"DURAÇÃO ESTIMADA: {Duracao}");
-            printViagem.AppendLine($"VEÍCULO PROGRAMADO: {Veiculo.Marca.ToUpper()} - {Veiculo.Modelo.ToUpper()} - PLACA: {Veiculo.Placa.ToUpper()}");
 
             return printViagem.ToString();
         }

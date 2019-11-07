@@ -16,12 +16,12 @@ namespace AgenciaDeTransportes
             }
             return result;
         }
-        public static int ValidarNumeros1A3(string s) // VALIDAR INPUTS DE NUMEROS INTEIROS DE 1 A 3
+        public static int ValidarNumeros0A2(string s) // VALIDAR INPUTS DE NUMEROS INTEIROS DE 0 A 2
         {
             int result;
-            while (!int.TryParse(s, out result) || result < 1 || result > 3)
+            while (!int.TryParse(s, out result) || result < 0 || result > 2)
             {
-                Console.Write("\nVALOR INVÁLIDO, DIGITE APENAS VALORES INTEIROS POSITIVOS DE [1] A [3]: ");
+                Console.Write("\nVALOR INVÁLIDO, DIGITE APENAS VALORES INTEIROS POSITIVOS DE [0] A [2]: ");
                 s = Console.ReadLine();
             }
             return result;
@@ -113,6 +113,16 @@ namespace AgenciaDeTransportes
                 s = Console.ReadLine().ToUpper();
             }
             return s;
+        }
+        public static string ValidarClima(string s)
+        {
+            while (s != "0" && s != "1" && s != "2")
+            {
+                Console.Write("VALOR INVÁLIDO! ESCOLHA ENTRE [0]ENSOLARADO - [1]CHOVENDO - [2]NEVANDO: ");
+                Console.WriteLine();
+                s = Console.ReadLine().ToUpper();
+            }
+            return s == "0" ? "ENSOLARADO" : s == "1" ? "CHOVENDO" : "NEVANDO";
         }
     }
 }
