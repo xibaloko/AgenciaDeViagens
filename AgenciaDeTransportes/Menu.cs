@@ -47,7 +47,20 @@ namespace AgenciaDeTransportes
                         Console.Write("\nPARA EXIBIR O RELATÓRIO DE UMA VIAGEM, DIGITE O ID DA VIAGEM: ");
                         int id = ValidarNumeros(Console.ReadLine());
                         Relatorio relatorio = agencia.Relatorios.Where(x => x.VeiculoViagem.IdViagem == id).FirstOrDefault();
-                        Console.WriteLine(relatorio);
+                        Console.Clear();
+                        if (relatorio != null)
+                        {
+                            if (agencia.Relatorios.Count(x => x.VeiculoViagem.IdViagem == id) > 1)
+                            {
+                                Console.WriteLine("A VIAGEM FOI INTERROMPIDA DURANTE O PERCURSO, HÁ MAIS DE UM RELATÓRIO!");
+                                foreach (Relatorio x in agencia.Relatorios)
+                                    if (x.VeiculoViagem.IdViagem == id)
+                                        Console.WriteLine(x);
+                            }
+                            else Console.WriteLine(relatorio);
+                        }
+                        else Console.WriteLine("NENHUMA VIAGEM FOI REALIZADA AINDA. NÃO HÁ RELATÓRIOS!");
+                        Console.Write("\nPRESSIONE QUALQUER TECLA PARA VOLTAR..");
                         Console.ReadKey();
                         break;
                     default:
@@ -111,7 +124,15 @@ namespace AgenciaDeTransportes
                         Console.ReadKey();
                         break;
                     case ConsoleKey.NumPad3:
-                        agencia.ExibirVeiculos(); //TODO: EXIBIR DETALHES ESPECIFICOS DE UM VEÍCULO
+                        if (agencia.Veiculos.Count > 0)
+                        {
+                            agencia.ExibirVeiculos();
+                            Console.Write("\nDESEJA EXIBIR ALGUM VEÍCULO ESPECÍFICO? (S/N): ");
+                            string opcao = ValidarOpcoesSOuN(Console.ReadLine().ToUpper());
+                            if (opcao == "S")
+                                agencia.ExibirVeiculoDetalhado();
+                        }
+                        else Console.WriteLine("NÃO HÁ VEÍCULOS CADASTRADOS!");
                         Console.Write("\nPRESSIONE QUALQUER TECLA PARA VOLTAR..");
                         Console.ReadKey();
                         break;
@@ -174,7 +195,7 @@ namespace AgenciaDeTransportes
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine("[1] - PROGRAMAR VIAGEM");
                 Console.WriteLine("[2] - EXECUTAR VIAGEM");
-                Console.WriteLine("[ESC] - SAIR");
+                Console.WriteLine("[ESC] - VOLTAR AO MENU INICIAL");
 
                 ConsoleKeyInfo tecla = Console.ReadKey();
 
@@ -185,9 +206,13 @@ namespace AgenciaDeTransportes
                         break;
                     case ConsoleKey.NumPad1:
                         agencia.ProgramarViagem();
+                        Console.Write("\nPRESSIONE QUALQUER TECLA PARA VOLTAR..");
+                        Console.ReadKey();
                         break;
                     case ConsoleKey.NumPad2:
                         agencia.ExecutarViagem();
+                        Console.Write("\nPRESSIONE QUALQUER TECLA PARA VOLTAR..");
+                        Console.ReadKey();
                         break;
                     default:
                         Console.Write("\nPRESSIONE QUALQUER TECLA PARA VOLTAR..");

@@ -29,7 +29,7 @@ namespace AgenciaDeTransportes.Entities
                 QuantidadeAlcool = CapacidadeTanque - QuantidadeAlcool;
                 Console.WriteLine("\nABASTECIDO COM SUCESSO!");
             }
-            else if (CapacidadeTanque >= litros && CapacidadeTanque >= QuantidadeAlcool)
+            else if (CapacidadeTanque >= QuantidadeAlcool + litros)
             {
                 QuantidadeAlcool += litros;
                 Console.WriteLine("\nABASTECIDO COM SUCESSO!");
@@ -40,12 +40,20 @@ namespace AgenciaDeTransportes.Entities
 
         public override void AutonomiaClima(Viagem viagem)
         {
-            throw new NotImplementedException();
+            if (viagem.Clima.Equals("ENSOLARADO"))
+                AutonomiaAlcoolVariada = AutonomiaAlcool;
+            else if (viagem.Clima.Equals("CHOVENDO"))
+                AutonomiaAlcoolVariada = AutonomiaAlcool - AutonomiaAlcool * 0.156;
+            else
+                AutonomiaAlcoolVariada = AutonomiaAlcool - AutonomiaAlcool * 0.247;
         }
 
         public override void AutonomiaPneu()
         {
-            throw new NotImplementedException();
+            if (StatusPneu == 2)
+                AutonomiaAlcoolVariada -= AutonomiaAlcool * 0.0725;
+            else if (StatusPneu == 1)
+                AutonomiaAlcoolVariada -= AutonomiaAlcool * 0.0915;
         }
 
         public override string ToString()

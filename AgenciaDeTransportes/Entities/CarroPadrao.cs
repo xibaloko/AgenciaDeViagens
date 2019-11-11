@@ -28,7 +28,7 @@ namespace AgenciaDeTransportes.Entities
                 QuantidadeGasolina = CapacidadeTanque - QuantidadeGasolina;
                 Console.WriteLine("\nABASTECIDO COM SUCESSO!");
             }
-            else if (CapacidadeTanque >= litros && CapacidadeTanque >= QuantidadeGasolina)
+            else if (CapacidadeTanque >= QuantidadeGasolina + litros)
             {
                 QuantidadeGasolina += litros;
                 Console.WriteLine("\nABASTECIDO COM SUCESSO!");
@@ -51,7 +51,7 @@ namespace AgenciaDeTransportes.Entities
         {
             if (StatusPneu == 2)
                 AutonomiaGasolinaVariada -= AutonomiaGasolina * 0.0725;
-            else if (StatusPneu == 3)
+            else if (StatusPneu == 1)
                 AutonomiaGasolinaVariada -= AutonomiaGasolina * 0.0915;
         }
 

@@ -64,3 +64,14 @@ C:\Users\Dev4Jobs9\source\repos\AgenciaDeViagens-master\AgenciaDeTransportes\obj
 C:\Users\Dev4Jobs9\source\repos\AgenciaDeViagens-master\AgenciaDeTransportes\obj\Debug\netcoreapp3.0\AgenciaDeTransportes.AssemblyInfo.cs
 C:\Users\Dev4Jobs9\source\repos\AgenciaDeViagens-master\AgenciaDeTransportes\obj\Debug\netcoreapp3.0\AgenciaDeTransportes.dll
 C:\Users\Dev4Jobs9\source\repos\AgenciaDeViagens-master\AgenciaDeTransportes\obj\Debug\netcoreapp3.0\AgenciaDeTransportes.pdb
+C:\Users\uliss\source\repos\AgenciaDeViagens 5.0\AgenciaDeViagens-master\AgenciaDeTransportes\bin\Debug\netcoreapp3.0\AgenciaDeTransportes.exe
+C:\Users\uliss\source\repos\AgenciaDeViagens 5.0\AgenciaDeViagens-master\AgenciaDeTransportes\bin\Debug\netcoreapp3.0\AgenciaDeTransportes.deps.json
+C:\Users\uliss\source\repos\AgenciaDeViagens 5.0\AgenciaDeViagens-master\AgenciaDeTransportes\bin\Debug\netcoreapp3.0\AgenciaDeTransportes.runtimeconfig.json
+C:\Users\uliss\source\repos\AgenciaDeViagens 5.0\AgenciaDeViagens-master\AgenciaDeTransportes\bin\Debug\netcoreapp3.0\AgenciaDeTransportes.runtimeconfig.dev.json
+C:\Users\uliss\source\repos\AgenciaDeViagens 5.0\AgenciaDeViagens-master\AgenciaDeTransportes\bin\Debug\netcoreapp3.0\AgenciaDeTransportes.dll
+C:\Users\uliss\source\repos\AgenciaDeViagens 5.0\AgenciaDeViagens-master\AgenciaDeTransportes\bin\Debug\netcoreapp3.0\AgenciaDeTransportes.pdb
+C:\Users\uliss\source\repos\AgenciaDeViagens 5.0\AgenciaDeViagens-master\AgenciaDeTransportes\obj\Debug\netcoreapp3.0\AgenciaDeTransportes.csprojAssemblyReference.cache
+C:\Users\uliss\source\repos\AgenciaDeViagens 5.0\AgenciaDeViagens-master\AgenciaDeTransportes\obj\Debug\netcoreapp3.0\AgenciaDeTransportes.AssemblyInfoInputs.cache
+C:\Users\uliss\source\repos\AgenciaDeViagens 5.0\AgenciaDeViagens-master\AgenciaDeTransportes\obj\Debug\netcoreapp3.0\AgenciaDeTransportes.AssemblyInfo.cs
+C:\Users\uliss\source\repos\AgenciaDeViagens 5.0\AgenciaDeViagens-master\AgenciaDeTransportes\obj\Debug\netcoreapp3.0\AgenciaDeTransportes.dll
+C:\Users\uliss\source\repos\AgenciaDeViagens 5.0\AgenciaDeViagens-master\AgenciaDeTransportes\obj\Debug\netcoreapp3.0\AgenciaDeTransportes.pdb

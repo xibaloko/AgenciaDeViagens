@@ -16,12 +16,12 @@ namespace AgenciaDeTransportes
             }
             return result;
         }
-        public static int ValidarNumeros0A2(string s) // VALIDAR INPUTS DE NUMEROS INTEIROS DE 0 A 2
+        public static int ValidarNumeros1A3(string s) // VALIDAR INPUTS DE NUMEROS INTEIROS DE 1 A 3
         {
             int result;
-            while (!int.TryParse(s, out result) || result < 0 || result > 2)
+            while (!int.TryParse(s, out result) || result < 1 || result > 3)
             {
-                Console.Write("\nVALOR INVÁLIDO, DIGITE APENAS VALORES INTEIROS POSITIVOS DE [0] A [2]: ");
+                Console.Write("\nVALOR INVÁLIDO, DIGITE APENAS VALORES INTEIROS POSITIVOS DE [1] A [3]: ");
                 s = Console.ReadLine();
             }
             return result;
@@ -94,22 +94,11 @@ namespace AgenciaDeTransportes
             }
             return data;
         }
-        public static string ValidarOpcoes(string s) // VALIDAR OPÇÕES DO TIPO DE COMBUSTIVEL
-        {
-            while (s != "F" && s != "A" && s != "G")
-            {
-                Console.Write("\nVALOR INVÁLIDO, ESCOLHA ENTRE AS OPÇÕES [F]-[A]-[G]: ");
-                Console.WriteLine();
-                s = Console.ReadLine().ToUpper();
-            }
-            return s;
-        }
         public static string ValidarOpcoesSOuN(string s) // VALIDAR INPUTS SIM OU NAO
         {
             while (s != "S" && s != "N")
             {
                 Console.Write("\nVALOR INVÁLIDO, ESCOLHA ENTRE AS OPÇÕES [S/N]: ");
-                Console.WriteLine();
                 s = Console.ReadLine().ToUpper();
             }
             return s;
