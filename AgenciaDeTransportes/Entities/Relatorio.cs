@@ -5,7 +5,7 @@ using System.Globalization;
 
 namespace AgenciaDeTransportes.Entities
 {
-    class Relatorio
+    public class Relatorio
     { 
         public VeiculoViagem VeiculoViagem { get; private set; }
         public List<string> MundancasClimaticas { get; private set; } = new List<string>();

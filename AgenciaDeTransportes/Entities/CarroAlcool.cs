@@ -5,7 +5,7 @@ using static AgenciaDeTransportes.ControleDeInputs;
 
 namespace AgenciaDeTransportes.Entities
 {
-    class CarroAlcool : Veiculo
+    public class CarroAlcool : Veiculo
     {
         public double AutonomiaAlcool { get; set; }
         public double AutonomiaAlcoolVariada { get; set; }

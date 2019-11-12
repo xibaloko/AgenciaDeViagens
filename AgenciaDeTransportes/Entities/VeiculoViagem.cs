@@ -6,7 +6,7 @@ using static AgenciaDeTransportes.ControleDeInputs;
 
 namespace AgenciaDeTransportes.Entities
 {
-    class VeiculoViagem
+    public class VeiculoViagem
     {
         public int IdViagem { get; set; } = new Random().Next(1000, 9999);
         public Veiculo Veiculo { get; set; }

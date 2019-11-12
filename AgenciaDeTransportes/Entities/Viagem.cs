@@ -4,7 +4,7 @@ using System.Globalization;
 
 namespace AgenciaDeTransportes.Entities
 {
-    class Viagem
+    public class Viagem
     {
         public int CodigoViagem { get; private set; } = new Random().Next(1000, 9999);
         public double Distancia { get; set; }
@@ -24,7 +24,7 @@ namespace AgenciaDeTransportes.Entities
 
         public void MudarClima()
         {
-            int random = new Random().Next(0, 3); // POR ALGUM MOTIVO O RANDOM DE 0 A 2 NÃO ESTAVA PERMITINDO ENTRAR NA CONDIÇÃO "NEVANDO"
+            int random = new Random().Next(0, 3);
             if (random == 0)
                 ClimaVariado = "ENSOLARADO";
             else if (random == 1)

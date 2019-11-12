@@ -75,3 +75,5 @@ C:\Users\uliss\source\repos\AgenciaDeViagens 5.0\AgenciaDeViagens-master\Agencia
 C:\Users\uliss\source\repos\AgenciaDeViagens 5.0\AgenciaDeViagens-master\AgenciaDeTransportes\obj\Debug\netcoreapp3.0\AgenciaDeTransportes.AssemblyInfo.cs
 C:\Users\uliss\source\repos\AgenciaDeViagens 5.0\AgenciaDeViagens-master\AgenciaDeTransportes\obj\Debug\netcoreapp3.0\AgenciaDeTransportes.dll
 C:\Users\uliss\source\repos\AgenciaDeViagens 5.0\AgenciaDeViagens-master\AgenciaDeTransportes\obj\Debug\netcoreapp3.0\AgenciaDeTransportes.pdb
+C:\Users\Dev4Jobs9\source\repos\AgenciaDeTransportes\AgenciaDeTransportes\bin\Debug\netcoreapp3.0\Newtonsoft.Json.dll
+C:\Users\Dev4Jobs9\source\repos\AgenciaDeTransportes\AgenciaDeTransportes\obj\Debug\netcoreapp3.0\AgenciaDeTransportes.csproj.CopyComplete

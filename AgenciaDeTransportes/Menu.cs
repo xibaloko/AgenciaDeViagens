@@ -2,12 +2,13 @@
 using AgenciaDeTransportes.Entities;
 using System.Linq;
 using static AgenciaDeTransportes.ControleDeInputs;
+using AgenciaDeTransportes.Database;
 
 namespace AgenciaDeTransportes
 {
     public class Menu
     {
-        internal static void MenuInicial(Agencia agencia)
+        internal static void MenuInicial(Agencia agencia, JsonBase jsonBase)
         {
             while (true)
             {
@@ -33,13 +34,13 @@ namespace AgenciaDeTransportes
                         Environment.Exit(0);
                         break;
                     case ConsoleKey.NumPad1:
-                        MenuVeiculo(agencia);
+                        MenuVeiculo(agencia, jsonBase);
                         break;
                     case ConsoleKey.NumPad2:
-                        MenuViagem(agencia);
+                        MenuViagem(agencia, jsonBase);
                         break;
                     case ConsoleKey.NumPad3:
-                        MenuViajar(agencia);
+                        MenuViajar(agencia, jsonBase);
                         break;
                     case ConsoleKey.NumPad4:
                         Console.Write("\nESCOLHA UMA VIAGEM PARA EXIBIR O RELATÓRIO!\n");
@@ -67,12 +68,12 @@ namespace AgenciaDeTransportes
                         Console.Write("\nVALOR INVÁLIDO, PRESSIONE QUALQUER TECLA PARA REINICIAR");
                         Console.ReadKey();
                         Console.Clear();
-                        MenuInicial(agencia);
+                        MenuInicial(agencia, jsonBase);
                         break;
                 }
             };
         }
-        internal static void MenuVeiculo(Agencia agencia)
+        internal static void MenuVeiculo(Agencia agencia, JsonBase jsonBase)
         {
             while (true)
             {
@@ -93,10 +94,11 @@ namespace AgenciaDeTransportes
                 switch (tecla.Key)
                 {
                     case ConsoleKey.Escape:
-                        MenuInicial(agencia);
+                        MenuInicial(agencia, jsonBase);
                         break;
                     case ConsoleKey.NumPad1:
                         agencia.CadastrarVeiculo();
+                        jsonBase.Salvar(agencia);
                         Console.Write("\nPRESSIONE QUALQUER TECLA PARA VOLTAR..");
                         Console.ReadKey();
                         break;
@@ -112,6 +114,7 @@ namespace AgenciaDeTransportes
                                 string placa = ValidarPlaca(Console.ReadLine().ToUpper());
                                 veiculo = agencia.Veiculos.Find(x => x.Placa == placa);
                                 veiculo.Abastecer();
+                                jsonBase.Salvar(agencia);
                             }
                             catch (Exception e)
                             {
@@ -139,12 +142,12 @@ namespace AgenciaDeTransportes
                     default:
                         Console.Write("\nPRESSIONE QUALQUER TECLA PARA VOLTAR..");
                         Console.ReadKey();
-                        MenuVeiculo(agencia);
+                        MenuVeiculo(agencia, jsonBase);
                         break;
                 }
             }
         }
-        internal static void MenuViagem(Agencia agencia)
+        internal static void MenuViagem(Agencia agencia, JsonBase jsonBase)
         {
             while (true)
             {
@@ -163,10 +166,11 @@ namespace AgenciaDeTransportes
                 switch (tecla.Key)
                 {
                     case ConsoleKey.Escape:
-                        MenuInicial(agencia);
+                        MenuInicial(agencia, jsonBase);
                         break;
                     case ConsoleKey.NumPad1:
                         agencia.CadastrarViagem();
+                        jsonBase.Salvar(agencia);
                         Console.Write("\nPRESSIONE QUALQUER TECLA PARA VOLTAR..");
                         Console.ReadKey();
                         break;
@@ -178,12 +182,12 @@ namespace AgenciaDeTransportes
                     default:
                         Console.Write("\nPRESSIONE QUALQUER TECLA PARA VOLTAR..");
                         Console.ReadKey();
-                        MenuViagem(agencia);
+                        MenuViagem(agencia, jsonBase);
                         break;
                 }
             }
         }
-        internal static void MenuViajar(Agencia agencia)
+        internal static void MenuViajar(Agencia agencia, JsonBase jsonBase)
         {
             while (true)
             {
@@ -202,22 +206,24 @@ namespace AgenciaDeTransportes
                 switch (tecla.Key)
                 {
                     case ConsoleKey.Escape:
-                        MenuInicial(agencia);
+                        MenuInicial(agencia, jsonBase);
                         break;
                     case ConsoleKey.NumPad1:
                         agencia.ProgramarViagem();
+                        jsonBase.Salvar(agencia);
                         Console.Write("\nPRESSIONE QUALQUER TECLA PARA VOLTAR..");
                         Console.ReadKey();
                         break;
                     case ConsoleKey.NumPad2:
                         agencia.ExecutarViagem();
+                        jsonBase.Salvar(agencia);
                         Console.Write("\nPRESSIONE QUALQUER TECLA PARA VOLTAR..");
                         Console.ReadKey();
                         break;
                     default:
                         Console.Write("\nPRESSIONE QUALQUER TECLA PARA VOLTAR..");
                         Console.ReadKey();
-                        MenuViajar(agencia);
+                        MenuViajar(agencia, jsonBase);
                         break;
                 }
             };

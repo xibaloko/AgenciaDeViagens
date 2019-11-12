@@ -3,7 +3,7 @@ using static AgenciaDeTransportes.ControleDeInputs;
 
 namespace AgenciaDeTransportes.Entities
 {
-    abstract class Veiculo
+    public abstract class Veiculo
     {
         public string Marca { get; private set; }
         public string Modelo { get; private set; }

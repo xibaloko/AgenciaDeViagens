@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using AgenciaDeTransportes.Database;
 using static AgenciaDeTransportes.ControleDeInputs;
 
 namespace AgenciaDeTransportes.Entities
 {
-    class Agencia
+    public class Agencia
     {
         public string NomeAgencia { get; private set; }
         public List<Veiculo> Veiculos { get; set; } = new List<Veiculo>();
@@ -70,6 +70,7 @@ namespace AgenciaDeTransportes.Entities
                     Veiculos.Add(new CarroPadrao(marca, modelo, placa, ano, velocidadeMaxima, capacidadeMaxima, statusPneu, autonomiaGasolina));
                     Console.WriteLine("\nVEÍCULO CADASTRADO COM SUCESSO!");
                 }
+
             }
 
         }
