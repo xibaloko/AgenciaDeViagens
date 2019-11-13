@@ -1,10 +1,13 @@
 ﻿using System;
 using AgenciaDeTransportes.Entities;
 using AgenciaDeTransportes.Database;
+using static AgenciaDeTransportes.Servicos.ControleDeInputs;
+using static AgenciaDeTransportes.Servicos.Menu;
+
 
 namespace AgenciaDeTransportes
 {
-    class Program
+    public class Program
     {
         public static Agencia _agencia { get; set; }
         static void Main(string[] args)
@@ -18,10 +21,10 @@ namespace AgenciaDeTransportes
                 Console.WriteLine("BEM VINDO!");
                 Console.ForegroundColor = ConsoleColor.Gray;
                 Console.Write("POR FAVOR DIGITE O NOME DA SUA AGÊNCIA DE TRANSPORTES: ");
-                _agencia = new Agencia(ControleDeInputs.ValidarLetrasComEspaco(Console.ReadLine()));
+                _agencia = new Agencia(ValidarLetrasComEspaco(Console.ReadLine()));
             }
 
-            Menu.MenuInicial(_agencia, jsonBase);
+            MenuInicial(_agencia, jsonBase);
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using System;
-using static AgenciaDeTransportes.ControleDeInputs;
+using static AgenciaDeTransportes.Servicos.ControleDeInputs;
 
 namespace AgenciaDeTransportes.Entities
 {

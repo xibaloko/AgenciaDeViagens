@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Globalization;
-using static AgenciaDeTransportes.ControleDeInputs;
+using static AgenciaDeTransportes.Servicos.ControleDeInputs;
 
 namespace AgenciaDeTransportes.Entities
 {
@@ -24,7 +24,9 @@ namespace AgenciaDeTransportes.Entities
             Console.Write("\nDIGITE A QUANTIDADE A SER ABASTECIDO EM ALCOOL (LITROS) OU [0] PARA COMPLETAR: ");
             double litros = ValidarLitrosAbastecimento(Console.ReadLine());
 
-            if (litros == 0.0)
+            if (QuantidadeAlcool == CapacidadeTanque)
+                Console.WriteLine("\nO TANQUE JÁ ESTÁ CHEIO!");
+            else if (litros == 0.0)
             {
                 QuantidadeAlcool = CapacidadeTanque - QuantidadeAlcool;
                 Console.WriteLine("\nABASTECIDO COM SUCESSO!");

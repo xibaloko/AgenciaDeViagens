@@ -2,7 +2,7 @@
 using System.Text.RegularExpressions;
 using System.Globalization;
 
-namespace AgenciaDeTransportes
+namespace AgenciaDeTransportes.Servicos
 {
     public class ControleDeInputs
     {

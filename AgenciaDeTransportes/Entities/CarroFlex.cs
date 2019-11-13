@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Globalization;
-using static AgenciaDeTransportes.ControleDeInputs;
+using static AgenciaDeTransportes.Servicos.ControleDeInputs;
 
 namespace AgenciaDeTransportes.Entities
 {
@@ -30,6 +30,9 @@ namespace AgenciaDeTransportes.Entities
             {
                 Console.Write("\nDIGITE A QUANTIDADE EM LITROS A SER ABASTECIDO EM ALCOOL OU [0] PARA COMPLETAR: ");
                 double litros = ValidarLitrosAbastecimento(Console.ReadLine());
+
+                if (QuantidadeAlcool + QuantidadeGasolina == CapacidadeTanque)
+                    Console.WriteLine("\nO TANQUE JÁ ESTÁ CHEIO!");
                 if (litros == 0.0)
                 {
                     QuantidadeAlcool = CapacidadeTanque - QuantidadeGasolina - QuantidadeAlcool;
@@ -47,6 +50,9 @@ namespace AgenciaDeTransportes.Entities
             {
                 Console.Write("\nDIGITE A QUANTIDADE EM LITROS A SER ABASTECIDO EM GASOLINA OU [0] PARA COMPLETAR: ");
                 double litros = ValidarLitrosAbastecimento(Console.ReadLine());
+
+                if (QuantidadeAlcool + QuantidadeGasolina == CapacidadeTanque)
+                    Console.WriteLine("\nO TANQUE JÁ ESTÁ CHEIO!");
                 if (litros == 0.0)
                 {
                     QuantidadeGasolina = CapacidadeTanque - QuantidadeAlcool - QuantidadeGasolina;

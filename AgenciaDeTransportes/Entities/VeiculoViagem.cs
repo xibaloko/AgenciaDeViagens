@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Globalization;
-using static AgenciaDeTransportes.ControleDeInputs;
+using static AgenciaDeTransportes.Servicos.ControleDeInputs;
 
 namespace AgenciaDeTransportes.Entities
 {

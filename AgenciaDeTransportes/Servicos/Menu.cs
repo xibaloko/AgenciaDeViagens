@@ -1,10 +1,10 @@
 ﻿using System;
 using AgenciaDeTransportes.Entities;
 using System.Linq;
-using static AgenciaDeTransportes.ControleDeInputs;
+using static AgenciaDeTransportes.Servicos.ControleDeInputs;
 using AgenciaDeTransportes.Database;
 
-namespace AgenciaDeTransportes
+namespace AgenciaDeTransportes.Servicos
 {
     public class Menu
     {
